@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2moxkc7jq5xd"]
+
+[ext_resource type="Script" path="res://nodes/gameobject/GameObject3D.cs" id="1_ratv7"]
+
+[node name="GameObject3D" type="StaticBody3D"]
+script = ExtResource("1_ratv7")

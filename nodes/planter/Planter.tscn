@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://di5pfodivlhno"]
+
+[ext_resource type="Script" path="res://nodes/Planter/Planter.cs" id="1_b7umh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vsuim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gudru"]
+albedo_color = Color(0.609319, 0.170325, 0.264697, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lf0tm"]
+material = SubResource("StandardMaterial3D_gudru")
+
+[node name="Planter" type="StaticBody3D"]
+script = ExtResource("1_b7umh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vsuim")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_lf0tm")

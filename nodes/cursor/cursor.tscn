@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1u2cgrvno3jw"]
+
+[ext_resource type="Script" path="res://nodes/cursor/Cursor.cs" id="1_vtx78"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g88qa"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_vtx78")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_g88qa")

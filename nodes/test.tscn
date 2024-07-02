@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn0arj4jjmays"]
+
+[ext_resource type="PackedScene" uid="uid://b2q6ov65c6lr2" path="res://nodes/plant/Plant.tscn" id="1_ra627"]
+[ext_resource type="PackedScene" uid="uid://2moxkc7jq5xd" path="res://nodes/gameobject/GameObject.tscn" id="3_23wm3"]
+[ext_resource type="PackedScene" uid="uid://biikpwn2ppcl6" path="res://nodes/player/Player.tscn" id="4_u0rqc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bdyfn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0mg3e"]
+sky_material = SubResource("ProceduralSkyMaterial_bdyfn")
+
+[sub_resource type="Environment" id="Environment_nfj8a"]
+background_mode = 2
+sky = SubResource("Sky_0mg3e")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xn1fd"]
+albedo_color = Color(0.416902, 0.188083, 0.0675852, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vgv2v"]
+material = SubResource("StandardMaterial3D_xn1fd")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_elbrm"]
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nfj8a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Plant" parent="." instance=ExtResource("1_ra627")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0812736, 0, -0.840514)
+
+[node name="Plant2" parent="." instance=ExtResource("1_ra627")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75742, 0, -0.162072)
+
+[node name="Plant3" parent="." instance=ExtResource("1_ra627")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67469, 0, 0.276919)
+
+[node name="GameObject3D" parent="." instance=ExtResource("3_23wm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GameObject3D"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_vgv2v")
+
+[node name="StaticBody3D" type="CollisionShape3D" parent="GameObject3D"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("BoxShape3D_elbrm")
+
+[node name="Player" parent="." instance=ExtResource("4_u0rqc")]
+transform = Transform3D(1, 0, 0, 0, 0.811094, 0.584915, 0, -0.584915, 0.811094, -2.65745, 3.91566, 5.01082)
